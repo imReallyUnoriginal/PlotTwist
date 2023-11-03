@@ -25,7 +25,7 @@ abstract class AbstractChart implements Arrayable, Htmlable, Jsonable
     protected $labels = [];
 
     /**
-     * @var string The chart options.
+     * @var array The chart options.
      */
     protected $options = [];
 
@@ -40,7 +40,7 @@ abstract class AbstractChart implements Arrayable, Htmlable, Jsonable
         ],
     ];
 
-    public function __construct($type, $title = null, $datasets = [])
+    public function __construct(string $type, string $title = null, array $datasets = [])
     {
         $this->setType($type);
         $this->setTitle($title);
@@ -51,7 +51,7 @@ abstract class AbstractChart implements Arrayable, Htmlable, Jsonable
      * @param  string  $type The type of chart to render.
      * @return $this
      */
-    public function setType($type): static
+    public function setType(string $type): static
     {
         $this->type = $type;
 
@@ -62,7 +62,7 @@ abstract class AbstractChart implements Arrayable, Htmlable, Jsonable
      * @param  array  $datasets The chart datasets.
      * @return $this
      */
-    public function setDatasets($datasets): static
+    public function setDatasets(array $datasets): static
     {
         $this->datasets = $datasets;
 
@@ -70,10 +70,18 @@ abstract class AbstractChart implements Arrayable, Htmlable, Jsonable
     }
 
     /**
+     * @return array
+     */
+    public function datasets(): array
+    {
+        return $this->datasets;
+    }
+
+    /**
      * @param  array  $labels The chart labels.
      * @return $this
      */
-    public function setLabels($labels): static
+    public function setLabels(array $labels): static
     {
         $this->labels = $labels;
 
@@ -81,10 +89,18 @@ abstract class AbstractChart implements Arrayable, Htmlable, Jsonable
     }
 
     /**
+     * @return string[]
+     */
+    public function labels(): array
+    {
+        return $this->labels;
+    }
+
+    /**
      * @param  array  $options The chart options.
      * @return $this
      */
-    public function setOptions($options): static
+    public function setOptions(array $options): static
     {
         $this->options = $options;
 
@@ -97,7 +113,7 @@ abstract class AbstractChart implements Arrayable, Htmlable, Jsonable
      * @param  array  $options The chart options.
      * @return $this
      */
-    public function mergeOptions($options): static
+    public function mergeOptions(array $options): static
     {
         $this->options = array_merge_recursive($this->options, $options);
 
@@ -105,10 +121,18 @@ abstract class AbstractChart implements Arrayable, Htmlable, Jsonable
     }
 
     /**
+     * @return array
+     */
+    public function options(): array
+    {
+        return $this->options;
+    }
+
+    /**
      * @param  string  $title The chart title.
      * @return $this
      */
-    public function setTitle($title): static
+    public function setTitle(string $title): static
     {
         return $this->mergeOptions([
             'plugins' => [
