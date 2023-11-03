@@ -1,17 +1,18 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "version": "0.1.0",
+    "name": "imreallyunoriginal/laravel-chartjs",
+    "description": "A Laravel wrapper for ChartJS",
     "keywords": [
-        ":vendor_name",
+        "imReallyUnoriginal",
         "laravel",
-        ":package_slug"
+        "laravel-chartjs"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/imreallyunoriginal/laravel-chartjs",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "imRlyUnoriginal",
+            "email": "isaacconnor01@gmail.com",
             "role": "Developer"
         }
     ],
@@ -30,24 +31,23 @@
         "pestphp/pest-plugin-laravel": "^2.0",
         "phpstan/extension-installer": "^1.1",
         "phpstan/phpstan-deprecation-rules": "^1.0",
-        "phpstan/phpstan-phpunit": "^1.0",
-        "spatie/laravel-ray": "^1.26"
+        "phpstan/phpstan-phpunit": "^1.0"
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src/",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories/"
+            "ImReallyUnoriginal\\LaravelChartjs\\": "src/",
+            "ImReallyUnoriginal\\LaravelChartjs\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests/",
+            "ImReallyUnoriginal\\LaravelChartjs\\Tests\\": "tests/",
             "Workbench\\App\\": "workbench/app/"
         }
     },
     "scripts": {
         "post-autoload-dump": "@composer run prepare",
-        "clear": "@php vendor/bin/testbench package:purge-skeleton --ansi",
+        "clear": "@php vendor/bin/testbench package:purge-laravel-chartjs --ansi",
         "prepare": "@php vendor/bin/testbench package:discover --ansi",
         "build": [
             "@composer run prepare",
@@ -73,10 +73,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "ImReallyUnoriginal\\LaravelChartjs\\LaravelChartjsServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "LaravelChartjs": "ImReallyUnoriginal\\LaravelChartjs\\Facades\\LaravelChartjs"
             }
         }
     },
