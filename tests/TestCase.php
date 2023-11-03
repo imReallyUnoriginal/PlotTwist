@@ -3,8 +3,8 @@
 namespace ImReallyUnoriginal\LaravelChartjs\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Orchestra\Testbench\TestCase as Orchestra;
 use ImReallyUnoriginal\LaravelChartjs\LaravelChartjsServiceProvider;
+use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
 {
