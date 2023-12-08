@@ -15,7 +15,7 @@ abstract class AbstractChart implements Arrayable, Htmlable, Jsonable
     protected $type;
 
     /**
-     * @var array The chart datasets.
+     * @var Dataset[] The chart datasets.
      */
     protected $datasets = [];
 
@@ -34,10 +34,6 @@ abstract class AbstractChart implements Arrayable, Htmlable, Jsonable
      */
     protected $defaultOptions = [
         'fullscreen' => true,
-        'parsing' => [
-            'xAxisKey' => 'label',
-            'yAxisKey' => 'value',
-        ],
     ];
 
     public function __construct(string $type, string $title = null, array $datasets = [])
@@ -59,7 +55,7 @@ abstract class AbstractChart implements Arrayable, Htmlable, Jsonable
     }
 
     /**
-     * @param  array  $datasets The chart datasets.
+     * @param  Dataset[] $datasets The chart datasets.
      * @return $this
      */
     public function setDatasets(array $datasets): static
@@ -70,7 +66,7 @@ abstract class AbstractChart implements Arrayable, Htmlable, Jsonable
     }
 
     /**
-     * @return array
+     * @return Dataset[]
      */
     public function datasets(): array
     {
@@ -164,13 +160,14 @@ abstract class AbstractChart implements Arrayable, Htmlable, Jsonable
     {
         // If labels are not set, collect them from the datasets.
         if (empty($this->labels)) {
-            $this->labels = collect($this->datasets)
-                ->pluck('data')
-                ->flatten(1)
-                ->pluck('label')
-                ->unique()
-                ->values()
-                ->all();
+            $this->labels = array_unique(array_reduce($this->datasets, function ($carry, $dataset) {
+                return array_merge($carry, array_keys($dataset->data()));
+            }, []));
+        } else {
+            // If labels are set, ensure that all datasets have the same labels.
+            foreach ($this->datasets as $dataset) {
+                $dataset->setLabels($this->labels);
+            }
         }
     }
 
@@ -192,7 +189,9 @@ abstract class AbstractChart implements Arrayable, Htmlable, Jsonable
             'type' => $this->type,
             'data' => [
                 'labels' => $this->labels,
-                'datasets' => $this->datasets,
+                'datasets' => array_map(function ($dataset) {
+                    return $dataset->toArray();
+                }, $this->datasets),
             ],
             'options' => array_merge_recursive($this->defaultOptions, $this->options),
         ];

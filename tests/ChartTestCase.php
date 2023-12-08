@@ -25,21 +25,23 @@ abstract class ChartTestCase extends TestCase
     {
         parent::setUp();
 
+        $this->labels = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve'];
+
         $this->datasets = [
-            'primitive' => Chart::dataset('Test Primitive[]', [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]),
+            'primitive' => Chart::dataset('Test Primitive[]', [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])->setLabels($this->labels),
             'object' => Chart::dataset('Test Object[]', [
-                ['label' => 'One', 'value' => 1],
-                ['label' => 'Two', 'value' => 2],
-                ['label' => 'Three', 'value' => 3],
-                ['label' => 'Four', 'value' => 4],
-                ['label' => 'Five', 'value' => 5],
-                ['label' => 'Six', 'value' => 6],
-                ['label' => 'Seven', 'value' => 7],
-                ['label' => 'Eight', 'value' => 8],
-                ['label' => 'Nine', 'value' => 9],
-                ['label' => 'Ten', 'value' => 10],
-                ['label' => 'Eleven', 'value' => 11],
-                ['label' => 'Twelve', 'value' => 12],
+                ['x' => 'One', 'y' => 1],
+                ['x' => 'Two', 'y' => 2],
+                ['x' => 'Three', 'y' => 3],
+                ['x' => 'Four', 'y' => 4],
+                ['x' => 'Five', 'y' => 5],
+                ['x' => 'Six', 'y' => 6],
+                ['x' => 'Seven', 'y' => 7],
+                ['x' => 'Eight', 'y' => 8],
+                ['x' => 'Nine', 'y' => 9],
+                ['x' => 'Ten', 'y' => 10],
+                ['x' => 'Eleven', 'y' => 11],
+                ['x' => 'Twelve', 'y' => 12],
             ]),
             'keys' => Chart::dataset('Test Keys', [
                 'One' => 1,
@@ -56,8 +58,6 @@ abstract class ChartTestCase extends TestCase
                 'Twelve' => 12,
             ]),
         ];
-
-        $this->labels = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve'];
     }
 
     protected function expectsChartToMatch(array $chart, array $expectedDataset): void

@@ -26,18 +26,11 @@ class Chart extends AbstractChart
      * @param  string  $label The dataset label.
      * @param  array  $data The dataset data.
      * @param  array  $options The dataset options.
+     * @return Dataset
      */
-    public static function dataset($label, $data, $options = []): array
+    public static function dataset($label, $data, $options = []): Dataset
     {
-        // If $data is a one-dimensional array with text keys, reformat it to a
-        // two-dimensional array with 'label' and 'value' keys.
-        if (is_array($data) && ! is_numeric(key($data))) {
-            $data = array_map(function ($value, $label) {
-                return compact('label', 'value');
-            }, $data, array_keys($data));
-        }
-
-        return compact('label', 'data', 'options');
+        return Dataset::create($label, $data, $options);
     }
 
     public static function __callStatic($name, $arguments): AbstractChart

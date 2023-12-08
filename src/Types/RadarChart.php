@@ -20,13 +20,8 @@ class RadarChart extends AbstractChart
     {
         parent::formatData();
 
-        // Radar charts don't support object datasets, so we need to convert their data
-        // to arrays in the same order as the labels.
         foreach ($this->datasets as &$dataset) {
-            if (is_array($dataset['data'][0])) {
-                $newData = array_column($dataset['data'], 'value', 'label');
-                $dataset['data'] = array_values($newData);
-            }
+            $dataset->format('primitive');
         }
     }
 }

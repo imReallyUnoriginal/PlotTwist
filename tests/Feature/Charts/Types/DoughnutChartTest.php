@@ -13,14 +13,14 @@ describe('DoughnutChart', function () {
 
         $chart = Chart::doughnut('Test Chart', [$this->datasets['primitive']])
             ->setLabels($this->labels);
-        $this->expectsChartToMatch($chart->toArray(), $this->datasets['primitive']);
+        $this->expectsChartToMatch($chart->toArray(), $this->datasets['primitive']->toArray());
 
         $chart->setDatasets([$this->datasets['object']]);
-        $this->expectsChartToMatch($chart->toArray(), $this->datasets['object']);
+        $this->expectsChartToMatch($chart->toArray(), $this->datasets['object']->toArray());
 
         $chart->setDatasets([$this->datasets['keys']]);
-        $this->expectsChartToMatch($chart->toArray(), array_merge($this->datasets['keys'], [
-            'data' => $this->datasets['object']['data']
+        $this->expectsChartToMatch($chart->toArray(), array_merge($this->datasets['keys']->toArray(), [
+            'data' => $this->datasets['object']->toArray()['data']
         ]));
     });
 });
