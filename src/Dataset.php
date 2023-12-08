@@ -39,7 +39,6 @@ class Dataset implements Arrayable
      * @param  string The dataset label.
      * @param  array The dataset data.
      * @param  array The dataset options.
-     * @return static
      */
     public static function create($label, $data, $options = []): static
     {
@@ -60,7 +59,7 @@ class Dataset implements Arrayable
     /**
      * Manually define the dataset axis labels.
      * This is useful when the data array is primitive.
-     * 
+     *
      * @param  array|Collection The dataset labels
      * @return $this
      */
@@ -71,9 +70,6 @@ class Dataset implements Arrayable
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function label(): string
     {
         return $this->label;
@@ -89,9 +85,6 @@ class Dataset implements Arrayable
             : $this->data;
     }
 
-    /**
-     * @return array
-     */
     public function options(): array
     {
         return $this->options;

@@ -8,9 +8,8 @@ class DatasetHelper
 {
     /**
      * Convert the dataset data into object format.
-     * 
+     *
      * @param  array|Collection The dataset data to normalize.
-     * @return array
      */
     public static function normalize(array|Collection $data): array
     {
@@ -31,9 +30,8 @@ class DatasetHelper
 
     /**
      * Check if the dataset data is in object format.
-     * 
+     *
      * @param  array|Collection The dataset data to check.
-     * @return bool
      */
     public static function isObject(array|Collection $data): bool
     {
@@ -44,14 +42,13 @@ class DatasetHelper
         return is_array($data)
             && is_numeric(key($data))
             && is_array($data[0])
-            && !is_numeric(key($data[0]));
+            && ! is_numeric(key($data[0]));
     }
 
     /**
      * Check if the dataset data is in primitive format.
-     * 
+     *
      * @param  array|Collection The dataset data to check.
-     * @return bool
      */
     public static function isPrimitive(array|Collection $data): bool
     {
@@ -61,14 +58,13 @@ class DatasetHelper
 
         return is_array($data)
             && is_numeric(key($data))
-            && !is_array($data[0]);
+            && ! is_array($data[0]);
     }
 
     /**
      * Check if the dataset data is in keys format.
-     * 
+     *
      * @param  array|Collection The dataset data to check.
-     * @return bool
      */
     public static function isKeys(array|Collection $data): bool
     {
@@ -77,15 +73,14 @@ class DatasetHelper
         }
 
         return is_array($data) &&
-            !is_numeric(key($data));
+            ! is_numeric(key($data));
     }
 
     /**
      * Manually define the dataset's labels
-     * 
+     *
      * @param  array|Collection The dataset data to modify.
-     * @param  array|Collection $labels The labels to use.
-     * @return array
+     * @param  array|Collection  $labels The labels to use.
      */
     public static function fillLabels(array|Collection $data, array|Collection $labels): array
     {

@@ -26,7 +26,6 @@ class Chart extends AbstractChart
      * @param  string  $label The dataset label.
      * @param  array  $data The dataset data.
      * @param  array  $options The dataset options.
-     * @return Dataset
      */
     public static function dataset($label, $data, $options = []): Dataset
     {

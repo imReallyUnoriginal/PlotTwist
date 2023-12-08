@@ -1,7 +1,7 @@
 <?php
 
-use ImReallyUnoriginal\LaravelChartjs\Chart;
 use ImReallyUnoriginal\LaravelChartjs\AbstractChart;
+use ImReallyUnoriginal\LaravelChartjs\Chart;
 
 describe('PieChart', function () {
     it('can be created', function () {
@@ -20,7 +20,7 @@ describe('PieChart', function () {
 
         $chart->setDatasets([$this->datasets['keys']]);
         $this->expectsChartToMatch($chart->toArray(), array_merge($this->datasets['keys']->toArray(), [
-            'data' => $this->datasets['object']->toArray()['data']
+            'data' => $this->datasets['object']->toArray()['data'],
         ]));
     });
 });

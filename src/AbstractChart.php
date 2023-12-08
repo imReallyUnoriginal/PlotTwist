@@ -36,7 +36,7 @@ abstract class AbstractChart implements Arrayable, Htmlable, Jsonable
         'fullscreen' => true,
     ];
 
-    public function __construct(string $type, string $title = null, array $datasets = [])
+    public function __construct(string $type, ?string $title = null, array $datasets = [])
     {
         $this->setType($type);
         $this->setTitle($title);
@@ -55,7 +55,7 @@ abstract class AbstractChart implements Arrayable, Htmlable, Jsonable
     }
 
     /**
-     * @param  Dataset[] $datasets The chart datasets.
+     * @param  Dataset[]  $datasets The chart datasets.
      * @return $this
      */
     public function setDatasets(array $datasets): static
@@ -116,9 +116,6 @@ abstract class AbstractChart implements Arrayable, Htmlable, Jsonable
         return $this;
     }
 
-    /**
-     * @return array
-     */
     public function options(): array
     {
         return $this->options;
