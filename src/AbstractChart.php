@@ -159,7 +159,7 @@ abstract class AbstractChart implements Arrayable, Htmlable, Jsonable
 
     /**
      * Set the required format for the chart data.
-     * 
+     *
      * @param  string|array  $format The format(s) to use.
      */
     public function format(string|array $formats): static
