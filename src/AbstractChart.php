@@ -6,6 +6,7 @@ use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Support\Str;
+use ImReallyUnoriginal\LaravelChartjs\Helpers\DatasetHelper;
 
 abstract class AbstractChart implements Arrayable, Htmlable, Jsonable
 {
@@ -34,6 +35,14 @@ abstract class AbstractChart implements Arrayable, Htmlable, Jsonable
      */
     protected $defaultOptions = [
         'fullscreen' => true,
+    ];
+
+    /**
+     * @var string[] The compatible formats for chart data.
+     */
+    protected $formats = [
+        DatasetHelper::PRIMITIVE,
+        DatasetHelper::OBJECT,
     ];
 
     public function __construct(string $type, ?string $title = null, array $datasets = [])
@@ -164,6 +173,13 @@ abstract class AbstractChart implements Arrayable, Htmlable, Jsonable
             // If labels are set, ensure that all datasets have the same labels.
             foreach ($this->datasets as $dataset) {
                 $dataset->setLabels($this->labels);
+            }
+        }
+
+        // If the datasets are not in the correct format, convert them.
+        if (count($this->formats) == 1) {
+            foreach ($this->datasets as &$dataset) {
+                $dataset->format($this->formats[0]);
             }
         }
     }

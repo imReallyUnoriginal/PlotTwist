@@ -19,9 +19,9 @@ class Dataset implements Arrayable
     protected $data = [];
 
     /**
-     * @var callable The dataset data formatter.
+     * @var string The format to use for the dataset data.
      */
-    protected $formatter;
+    protected $format;
 
     /**
      * @var array The dataset options.
@@ -80,8 +80,8 @@ class Dataset implements Arrayable
      */
     public function data(): array
     {
-        return $this->formatter
-            ? call_user_func($this->formatter)
+        return $this->format
+            ? DatasetHelper::format($this->data, $this->format)
             : $this->data;
     }
 
@@ -96,17 +96,9 @@ class Dataset implements Arrayable
      * @param  string  $format The format to use.
      * @return $this
      */
-    public function format($format = 'object'): static
+    public function format($format): static
     {
-        if ($format === 'object') {
-            $this->formatter = fn () => $this->data;
-        } elseif ($format === 'primitive') {
-            $this->formatter = fn () => array_column($this->data, 'y');
-        } elseif ($format === 'keys') {
-            $this->formatter = fn () => array_combine(array_column($this->data, 'x'), array_column($this->data, 'y'));
-        } else {
-            throw new \Exception('Invalid format provided.');
-        }
+        $this->format = $format;
 
         return $this;
     }

@@ -2,14 +2,14 @@
 
 namespace ImReallyUnoriginal\LaravelChartjs\Traits;
 
+use ImReallyUnoriginal\LaravelChartjs\Helpers\DatasetHelper;
+
 trait PrimitiveFormat
 {
-    public function formatData(): void
+    public function __construct($title = null, $datasets = [])
     {
-        parent::formatData();
+        parent::__construct($title, $datasets);
 
-        foreach ($this->datasets as &$dataset) {
-            $dataset->format('primitive');
-        }
+        $this->formats = [DatasetHelper::PRIMITIVE];
     }
 }

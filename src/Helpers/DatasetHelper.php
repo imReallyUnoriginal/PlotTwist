@@ -6,6 +6,10 @@ use Illuminate\Support\Collection;
 
 class DatasetHelper
 {
+    const PRIMITIVE = 'primitive';
+    const KEYS = 'keys';
+    const OBJECT = 'object';
+
     /**
      * Convert the dataset data into object format.
      *
@@ -82,10 +86,6 @@ class DatasetHelper
      */
     public static function fillLabels(array|Collection $data, array|Collection $labels): array
     {
-        if ($data instanceof Collection) {
-            $data = $data->toArray();
-        }
-
         if ($labels instanceof Collection) {
             $labels = $labels->toArray();
         }
@@ -111,5 +111,54 @@ class DatasetHelper
 
             return array_shift($data);
         }, $labels);
+    }
+
+    /**
+     * Convert the dataset data into primitive format.
+     *
+     * @param  array|Collection The dataset data to convert.
+     */
+    public static function toPrimitive(array|Collection $data): array
+    {
+        return array_column(static::normalize($data), 'y');
+    }
+
+    /**
+     * Convert the dataset data into keys format.
+     *
+     * @param  array|Collection The dataset data to convert.
+     */
+    public static function toKeys(array|Collection $data): array
+    {
+        return array_column(static::normalize($data), 'y', 'x');
+    }
+
+    /**
+     * Convert the dataset data into object format.
+     *
+     * @param  array|Collection The dataset data to convert.
+     */
+    public static function toObject(array|Collection $data): array
+    {
+        return static::normalize($data);
+    }
+
+    /**
+     * Convert the dataset data into the specified format.
+     *
+     * @param  array|Collection The dataset data to convert.
+     * @param  string  $format The format to convert to.
+     */
+    public static function format(array|Collection $data, string $format): array
+    {
+        if ($format === static::PRIMITIVE) {
+            return static::toPrimitive($data);
+        } elseif ($format === static::KEYS) {
+            return static::toKeys($data);
+        } elseif ($format === static::OBJECT) {
+            return static::toObject($data);
+        } else {
+            throw new \InvalidArgumentException('Invalid format provided.');
+        }
     }
 }
