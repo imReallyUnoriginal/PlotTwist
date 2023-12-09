@@ -7,7 +7,9 @@ use Illuminate\Support\Collection;
 class DatasetHelper
 {
     const PRIMITIVE = 'primitive';
+
     const KEYS = 'keys';
+
     const OBJECT = 'object';
 
     /**
