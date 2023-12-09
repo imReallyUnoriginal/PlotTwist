@@ -1,11 +1,11 @@
 <?php
 
-use ImReallyUnoriginal\LaravelChartjs\AbstractChart;
 use ImReallyUnoriginal\LaravelChartjs\Chart;
+use ImReallyUnoriginal\LaravelChartjs\Types\PieChart;
 
 describe('PieChart', function () {
     it('can be created', function () {
-        expect(Chart::pie('Test Chart'))->toBeInstanceOf(AbstractChart::class);
+        expect(Chart::pie('Test Chart'))->toBeInstanceOf(PieChart::class);
     });
 
     it('is arrayable', function () {
@@ -13,14 +13,18 @@ describe('PieChart', function () {
 
         $chart = Chart::pie('Test Chart', [$this->datasets['primitive']])
             ->setLabels($this->labels);
-        $this->expectsChartToMatch($chart->toArray(), $this->datasets['primitive']->toArray());
+        $this->expectsChartToMatch($chart->toArray(), array_merge($this->datasets['primitive']->toArray(), [
+            'data' => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+        ]));
 
         $chart->setDatasets([$this->datasets['object']]);
-        $this->expectsChartToMatch($chart->toArray(), $this->datasets['object']->toArray());
+        $this->expectsChartToMatch($chart->toArray(), array_merge($this->datasets['object']->toArray(), [
+            'data' => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+        ]));
 
         $chart->setDatasets([$this->datasets['keys']]);
         $this->expectsChartToMatch($chart->toArray(), array_merge($this->datasets['keys']->toArray(), [
-            'data' => $this->datasets['object']->toArray()['data'],
+            'data' => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
         ]));
     });
 });

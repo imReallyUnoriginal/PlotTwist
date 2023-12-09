@@ -2,20 +2,8 @@
 
 namespace ImReallyUnoriginal\LaravelChartjs\Types;
 
-use ImReallyUnoriginal\LaravelChartjs\AbstractChart;
-
-class BarChart extends AbstractChart
+class BarChart extends TypedChart
 {
-    public function __construct($title = null, $datasets = [])
-    {
-        parent::__construct('bar', $title, $datasets);
-    }
-
-    public static function create($title = null, $datasets = []): static
-    {
-        return new static($title, $datasets);
-    }
-
     /**
      * Display the chart horizontally.
      */
