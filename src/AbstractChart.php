@@ -59,7 +59,6 @@ abstract class AbstractChart implements Arrayable, Htmlable, Jsonable
 
     /**
      * @param  string  $type The type of chart to render.
-     * @return $this
      */
     public function setType(string $type): static
     {
@@ -70,7 +69,6 @@ abstract class AbstractChart implements Arrayable, Htmlable, Jsonable
 
     /**
      * @param  Dataset[]  $datasets The chart datasets.
-     * @return $this
      */
     public function setDatasets(array $datasets): static
     {
@@ -89,7 +87,6 @@ abstract class AbstractChart implements Arrayable, Htmlable, Jsonable
 
     /**
      * @param  array  $labels The chart labels.
-     * @return $this
      */
     public function setLabels(array $labels): static
     {
@@ -108,7 +105,6 @@ abstract class AbstractChart implements Arrayable, Htmlable, Jsonable
 
     /**
      * @param  array  $options The chart options.
-     * @return $this
      */
     public function setOptions(array $options): static
     {
@@ -121,7 +117,6 @@ abstract class AbstractChart implements Arrayable, Htmlable, Jsonable
      * Merge the given options with the existing options.
      *
      * @param  array  $options The chart options.
-     * @return $this
      */
     public function mergeOptions(array $options): static
     {
@@ -137,7 +132,6 @@ abstract class AbstractChart implements Arrayable, Htmlable, Jsonable
 
     /**
      * @param  string  $title The chart title.
-     * @return $this
      */
     public function setTitle(string $title): static
     {
@@ -155,11 +149,28 @@ abstract class AbstractChart implements Arrayable, Htmlable, Jsonable
      * @param  string  $label The dataset label.
      * @param  array  $data The dataset data.
      * @param  array  $options The dataset options.
-     * @return $this
      */
     public function addDataset($label, $data, $options = []): static
     {
         $this->datasets[] = Chart::dataset($label, $data, $options);
+
+        return $this;
+    }
+
+    /**
+     * Set the required format for the chart data.
+     * 
+     * @param  string|array  $format The format(s) to use.
+     */
+    public function format(string|array $formats): static
+    {
+        foreach ((array) $formats as $format) {
+            if (! in_array($format, $this->formats)) {
+                throw new \Exception('Conflict in required data formats: Must be '.$format.' and ('.implode(' or ', $this->formats).').');
+            }
+        }
+
+        $this->formats = (array) $formats;
 
         return $this;
     }

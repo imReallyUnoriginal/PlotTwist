@@ -2,27 +2,11 @@
 
 namespace ImReallyUnoriginal\LaravelChartjs\Types;
 
+use ImReallyUnoriginal\LaravelChartjs\Traits\UsesIndexAxis;
+
 class BarChart extends TypedChart
 {
-    /**
-     * Display the chart horizontally.
-     */
-    public function horizontal(): static
-    {
-        return $this->mergeOptions([
-            'indexAxis' => 'y',
-        ]);
-    }
-
-    /**
-     * Display the chart vertically.
-     */
-    public function vertical(): static
-    {
-        return $this->mergeOptions([
-            'indexAxis' => 'x',
-        ]);
-    }
+    use UsesIndexAxis;
 
     /**
      * Display the chart with stacked datasets.
