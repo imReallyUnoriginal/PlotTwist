@@ -75,9 +75,6 @@ class Dataset implements Arrayable
         return $this->label;
     }
 
-    /**
-     * @return Collection
-     */
     public function data(): Collection
     {
         return $this->format

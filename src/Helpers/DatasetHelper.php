@@ -26,7 +26,7 @@ class DatasetHelper
         } elseif (static::isKeys($data) || static::isPrimitive($data)) {
             return $data->map(fn ($y, $x) => compact('x', 'y'))->values();
         } else {
-            throw new \InvalidArgumentException('Invalid data provided: ' . json_encode($data->first()) . '.');
+            throw new \InvalidArgumentException('Invalid data provided: '.json_encode($data->first()).'.');
         }
     }
 
@@ -39,7 +39,7 @@ class DatasetHelper
     {
         return static::toCollection($data)->contains(fn ($value, $key) => is_numeric($key)
             && is_array($value)
-            && !is_numeric(key($value))
+            && ! is_numeric(key($value))
         );
     }
 
@@ -50,7 +50,7 @@ class DatasetHelper
      */
     public static function isPrimitive(array|Collection $data): bool
     {
-        return static::toCollection($data)->contains(fn ($value, $key) => is_numeric($key) && !is_array($value));
+        return static::toCollection($data)->contains(fn ($value, $key) => is_numeric($key) && ! is_array($value));
     }
 
     /**
@@ -60,7 +60,7 @@ class DatasetHelper
      */
     public static function isKeys(array|Collection $data): bool
     {
-        return static::toCollection($data)->contains(fn ($value, $key) => !is_numeric($key));
+        return static::toCollection($data)->contains(fn ($value, $key) => ! is_numeric($key));
     }
 
     /**
@@ -139,7 +139,7 @@ class DatasetHelper
         } elseif ($format === static::OBJECT) {
             return static::toObject($data);
         } else {
-            throw new \InvalidArgumentException('Invalid format provided: ' . $format . '.');
+            throw new \InvalidArgumentException('Invalid format provided: '.$format.'.');
         }
     }
 
