@@ -20,8 +20,16 @@ describe('DatasetHelper', function () {
     ];
 
     it('can normalize a dataset', function () use ($primitiveData, $objectData, $keyedData) {
-        expect(DatasetHelper::normalize($primitiveData))->toBe([['y' => 1], ['y' => 2], ['y' => 3]]);
-        expect(DatasetHelper::normalize(collect($primitiveData)))->toBe([['y' => 1], ['y' => 2], ['y' => 3]]);
+        expect(DatasetHelper::normalize($primitiveData))->toBe([
+            ['x' => 0, 'y' => 1],
+            ['x' => 1, 'y' => 2],
+            ['x' => 2, 'y' => 3],
+        ]);
+        expect(DatasetHelper::normalize(collect($primitiveData)))->toBe([
+            ['x' => 0, 'y' => 1],
+            ['x' => 1, 'y' => 2],
+            ['x' => 2, 'y' => 3],
+        ]);
 
         expect(DatasetHelper::normalize($objectData))->toBe($objectData);
         expect(DatasetHelper::normalize(collect($objectData)))->toBe($objectData);

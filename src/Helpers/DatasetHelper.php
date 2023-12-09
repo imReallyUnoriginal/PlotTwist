@@ -17,11 +17,9 @@ class DatasetHelper
             $data = $data->toArray();
         }
 
-        if (static::isPrimitive($data)) {
-            return array_map(fn ($y) => compact('y'), $data);
-        } elseif (static::isObject($data)) {
+        if (static::isObject($data)) {
             return $data;
-        } elseif (static::isKeys($data)) {
+        } elseif (static::isKeys($data) || static::isPrimitive($data)) {
             return array_map(fn ($x, $y) => compact('x', 'y'), array_keys($data), $data);
         } else {
             throw new \InvalidArgumentException('Invalid data provided.');
@@ -58,7 +56,7 @@ class DatasetHelper
 
         return is_array($data)
             && is_numeric(key($data))
-            && ! is_array($data[0]);
+            && ! is_array($data[key($data)]);
     }
 
     /**
@@ -80,7 +78,7 @@ class DatasetHelper
      * Manually define the dataset's labels
      *
      * @param  array|Collection The dataset data to modify.
-     * @param  array|Collection  $labels The labels to use.
+     * @param  array|Collection $labels The labels to use.
      */
     public static function fillLabels(array|Collection $data, array|Collection $labels): array
     {
@@ -94,8 +92,8 @@ class DatasetHelper
 
         $data = static::normalize($data);
 
-        // If no labels are set, fill them in sequentially
-        if (empty(array_column($data, 'x'))) {
+        // If the labels are default array indexes, fill in the gaps
+        if (array_column($data, 'x') === range(0, count($data) - 1)) {
             return array_map(function ($x, $y) {
                 return compact('x', 'y');
             }, $labels, array_column($data, 'y'));

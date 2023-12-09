@@ -9,9 +9,9 @@ describe('Dataset', function () {
         expect($dataset)->toBeInstanceOf(Dataset::class);
         expect($dataset->label())->toBe('Test Dataset');
         expect($dataset->data())->toBe([
-            ['y' => 1],
-            ['y' => 2],
-            ['y' => 3],
+            ['x' => 0, 'y' => 1],
+            ['x' => 1, 'y' => 2],
+            ['x' => 2, 'y' => 3],
         ]);
         expect($dataset->options())->toBe(['test' => 'test']);
     });
