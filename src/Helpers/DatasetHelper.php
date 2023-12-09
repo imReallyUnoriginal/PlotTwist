@@ -78,7 +78,7 @@ class DatasetHelper
      * Manually define the dataset's labels
      *
      * @param  array|Collection The dataset data to modify.
-     * @param  array|Collection $labels The labels to use.
+     * @param  array|Collection  $labels The labels to use.
      */
     public static function fillLabels(array|Collection $data, array|Collection $labels): array
     {
