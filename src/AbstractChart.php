@@ -11,6 +11,11 @@ use ImReallyUnoriginal\LaravelChartjs\Helpers\DatasetHelper;
 abstract class AbstractChart implements Arrayable, Htmlable, Jsonable
 {
     /**
+     * @var string The chart's unique identifier.
+     */
+    protected $id;
+
+    /**
      * @var string The type of chart to render.
      */
     protected $type;
@@ -167,7 +172,7 @@ abstract class AbstractChart implements Arrayable, Htmlable, Jsonable
         // If labels are not set, collect them from the datasets.
         if (empty($this->labels)) {
             $this->labels = array_unique(array_reduce($this->datasets, function ($carry, $dataset) {
-                return array_merge($carry, array_keys($dataset->data()));
+                return array_merge($carry, $dataset->data()->pluck('x')->toArray());
             }, []));
         } else {
             // If labels are set, ensure that all datasets have the same labels.
@@ -186,7 +191,7 @@ abstract class AbstractChart implements Arrayable, Htmlable, Jsonable
 
     public function toHtml(): string
     {
-        $id = Str::random();
+        $id = $this->id ? e($this->id) : Str::random();
 
         return <<<HTML
             <canvas id="$id"></canvas>
