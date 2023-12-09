@@ -17,18 +17,16 @@ class DatasetHelper
      *
      * @param  array|Collection The dataset data to normalize.
      */
-    public static function normalize(array|Collection $data): array
+    public static function normalize(array|Collection $data): Collection
     {
-        if ($data instanceof Collection) {
-            $data = $data->toArray();
-        }
+        $data = static::toCollection($data);
 
         if (static::isObject($data)) {
             return $data;
         } elseif (static::isKeys($data) || static::isPrimitive($data)) {
-            return array_map(fn ($x, $y) => compact('x', 'y'), array_keys($data), $data);
+            return $data->map(fn ($y, $x) => compact('x', 'y'))->values();
         } else {
-            throw new \InvalidArgumentException('Invalid data provided.');
+            throw new \InvalidArgumentException('Invalid data provided: ' . json_encode($data->first()) . '.');
         }
     }
 
@@ -39,14 +37,10 @@ class DatasetHelper
      */
     public static function isObject(array|Collection $data): bool
     {
-        if ($data instanceof Collection) {
-            $data = $data->toArray();
-        }
-
-        return is_array($data)
-            && is_numeric(key($data))
-            && is_array($data[0])
-            && ! is_numeric(key($data[0]));
+        return static::toCollection($data)->contains(fn ($value, $key) => is_numeric($key)
+            && is_array($value)
+            && !is_numeric(key($value))
+        );
     }
 
     /**
@@ -56,13 +50,7 @@ class DatasetHelper
      */
     public static function isPrimitive(array|Collection $data): bool
     {
-        if ($data instanceof Collection) {
-            $data = $data->toArray();
-        }
-
-        return is_array($data)
-            && is_numeric(key($data))
-            && ! is_array($data[key($data)]);
+        return static::toCollection($data)->contains(fn ($value, $key) => is_numeric($key) && !is_array($value));
     }
 
     /**
@@ -72,12 +60,7 @@ class DatasetHelper
      */
     public static function isKeys(array|Collection $data): bool
     {
-        if ($data instanceof Collection) {
-            $data = $data->toArray();
-        }
-
-        return is_array($data) &&
-            ! is_numeric(key($data));
+        return static::toCollection($data)->contains(fn ($value, $key) => !is_numeric($key));
     }
 
     /**
@@ -86,33 +69,29 @@ class DatasetHelper
      * @param  array|Collection The dataset data to modify.
      * @param  array|Collection  $labels The labels to use.
      */
-    public static function fillLabels(array|Collection $data, array|Collection $labels): array
+    public static function fillLabels(array|Collection $data, array|Collection $labels): Collection
     {
-        if ($labels instanceof Collection) {
-            $labels = $labels->toArray();
-        }
-
+        $labels = static::toCollection($labels);
         $data = static::normalize($data);
 
         // If the labels are default array indexes, fill in the gaps
-        if (array_column($data, 'x') === range(0, count($data) - 1)) {
-            return array_map(function ($x, $y) {
-                return compact('x', 'y');
-            }, $labels, array_column($data, 'y'));
+        if ($data->pluck('x')->diff(range(0, $data->count() - 1))->isEmpty()) {
+            return $labels->map(fn ($label, $i) => [
+                'x' => $label,
+                'y' => $data->get($i)['y'],
+            ]);
         }
 
         // If labels are set, reorder them and fill in the gaps
-        return array_map(function ($label) use ($data) {
-            $data = array_filter($data, function ($data) use ($label) {
+        return $labels->map(function ($label) use ($data) {
+            $filteredData = $data->filter(function ($data) use ($label) {
                 return array_key_exists('x', $data) && $data['x'] === $label;
             });
 
-            if (empty($data)) {
-                return ['x' => $label, 'y' => 0];
-            }
-
-            return array_shift($data);
-        }, $labels);
+            return $filteredData->isEmpty()
+                ? ['x' => $label, 'y' => 0]
+                : $filteredData->first();
+        });
     }
 
     /**
@@ -120,9 +99,9 @@ class DatasetHelper
      *
      * @param  array|Collection The dataset data to convert.
      */
-    public static function toPrimitive(array|Collection $data): array
+    public static function toPrimitive(array|Collection $data): Collection
     {
-        return array_column(static::normalize($data), 'y');
+        return static::normalize($data)->pluck('y');
     }
 
     /**
@@ -130,9 +109,9 @@ class DatasetHelper
      *
      * @param  array|Collection The dataset data to convert.
      */
-    public static function toKeys(array|Collection $data): array
+    public static function toKeys(array|Collection $data): Collection
     {
-        return array_column(static::normalize($data), 'y', 'x');
+        return static::normalize($data)->pluck('y', 'x');
     }
 
     /**
@@ -140,7 +119,7 @@ class DatasetHelper
      *
      * @param  array|Collection The dataset data to convert.
      */
-    public static function toObject(array|Collection $data): array
+    public static function toObject(array|Collection $data): Collection
     {
         return static::normalize($data);
     }
@@ -151,7 +130,7 @@ class DatasetHelper
      * @param  array|Collection The dataset data to convert.
      * @param  string  $format The format to convert to.
      */
-    public static function format(array|Collection $data, string $format): array
+    public static function format(array|Collection $data, string $format): Collection
     {
         if ($format === static::PRIMITIVE) {
             return static::toPrimitive($data);
@@ -160,7 +139,17 @@ class DatasetHelper
         } elseif ($format === static::OBJECT) {
             return static::toObject($data);
         } else {
-            throw new \InvalidArgumentException('Invalid format provided.');
+            throw new \InvalidArgumentException('Invalid format provided: ' . $format . '.');
         }
+    }
+
+    /**
+     * Convert the dataset data into a collection.
+     *
+     * @param  array|Collection The dataset data to convert.
+     */
+    public static function toCollection(array|Collection $data): Collection
+    {
+        return $data instanceof Collection ? $data : new Collection($data);
     }
 }

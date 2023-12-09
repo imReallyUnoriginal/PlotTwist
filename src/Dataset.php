@@ -14,7 +14,7 @@ class Dataset implements Arrayable
     protected $label;
 
     /**
-     * @var array{x?: string, y: integer}[] The dataset data.
+     * @var Collection The dataset data.
      */
     protected $data = [];
 
@@ -76,13 +76,13 @@ class Dataset implements Arrayable
     }
 
     /**
-     * @return array{x?: string, y: integer}[]
+     * @return Collection
      */
-    public function data(): array
+    public function data(): Collection
     {
         return $this->format
             ? DatasetHelper::format($this->data, $this->format)
-            : $this->data;
+            : DatasetHelper::toCollection($this->data);
     }
 
     public function options(): array
@@ -107,7 +107,7 @@ class Dataset implements Arrayable
     {
         return [
             'label' => $this->label(),
-            'data' => $this->data(),
+            'data' => $this->data()->toArray(),
             'options' => $this->options(),
         ];
     }

@@ -20,22 +20,22 @@ describe('DatasetHelper', function () {
     ];
 
     it('can normalize a dataset', function () use ($primitiveData, $objectData, $keyedData) {
-        expect(DatasetHelper::normalize($primitiveData))->toBe([
+        expect(DatasetHelper::normalize($primitiveData)->toArray())->toBe([
             ['x' => 0, 'y' => 1],
             ['x' => 1, 'y' => 2],
             ['x' => 2, 'y' => 3],
         ]);
-        expect(DatasetHelper::normalize(collect($primitiveData)))->toBe([
+        expect(DatasetHelper::normalize(collect($primitiveData))->toArray())->toBe([
             ['x' => 0, 'y' => 1],
             ['x' => 1, 'y' => 2],
             ['x' => 2, 'y' => 3],
         ]);
 
-        expect(DatasetHelper::normalize($objectData))->toBe($objectData);
-        expect(DatasetHelper::normalize(collect($objectData)))->toBe($objectData);
+        expect(DatasetHelper::normalize($objectData)->toArray())->toBe($objectData);
+        expect(DatasetHelper::normalize(collect($objectData))->toArray())->toBe($objectData);
 
-        expect(DatasetHelper::normalize($keyedData))->toBe($objectData);
-        expect(DatasetHelper::normalize(collect($keyedData)))->toBe($objectData);
+        expect(DatasetHelper::normalize($keyedData)->toArray())->toBe($objectData);
+        expect(DatasetHelper::normalize(collect($keyedData))->toArray())->toBe($objectData);
     });
 
     it('can check if a dataset is in primitive format', function () use ($primitiveData, $objectData, $keyedData) {
@@ -77,13 +77,13 @@ describe('DatasetHelper', function () {
             ['x' => 'B', 'y' => 2],
             ['x' => 'A', 'y' => 1],
         ];
-        expect(DatasetHelper::fillLabels($primitiveData, ['C', 'B', 'A']))->toBe([['x' => 'C', 'y' => 1], ['x' => 'B', 'y' => 2], ['x' => 'A', 'y' => 3]]);
-        expect(DatasetHelper::fillLabels(collect($primitiveData), collect(['C', 'B', 'A'])))->toBe([['x' => 'C', 'y' => 1], ['x' => 'B', 'y' => 2], ['x' => 'A', 'y' => 3]]);
+        expect(DatasetHelper::fillLabels($primitiveData, ['C', 'B', 'A'])->toArray())->toBe([['x' => 'C', 'y' => 1], ['x' => 'B', 'y' => 2], ['x' => 'A', 'y' => 3]]);
+        expect(DatasetHelper::fillLabels(collect($primitiveData), collect(['C', 'B', 'A']))->toArray())->toBe([['x' => 'C', 'y' => 1], ['x' => 'B', 'y' => 2], ['x' => 'A', 'y' => 3]]);
 
-        expect(DatasetHelper::fillLabels($objectData, ['C', 'B', 'A']))->toBe($sortedObjectData);
-        expect(DatasetHelper::fillLabels(collect($objectData), collect(['C', 'B', 'A'])))->toBe($sortedObjectData);
+        expect(DatasetHelper::fillLabels($objectData, ['C', 'B', 'A'])->toArray())->toBe($sortedObjectData);
+        expect(DatasetHelper::fillLabels(collect($objectData), collect(['C', 'B', 'A']))->toArray())->toBe($sortedObjectData);
 
-        expect(DatasetHelper::fillLabels($keyedData, ['C', 'B', 'A']))->toBe($sortedObjectData);
-        expect(DatasetHelper::fillLabels(collect($keyedData), collect(['C', 'B', 'A'])))->toBe($sortedObjectData);
+        expect(DatasetHelper::fillLabels($keyedData, ['C', 'B', 'A'])->toArray())->toBe($sortedObjectData);
+        expect(DatasetHelper::fillLabels(collect($keyedData), collect(['C', 'B', 'A']))->toArray())->toBe($sortedObjectData);
     });
 });
