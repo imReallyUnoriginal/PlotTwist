@@ -3,12 +3,13 @@
 namespace ImReallyUnoriginal\LaravelChartjs;
 
 /**
- * @method static Chart line($title = null, $datasets = [], $labels = [])
  * @method static Chart bar($title = null, $datasets = [], $labels = [])
- * @method static Chart radar($title = null, $datasets = [], $labels = [])
+ * @method static Chart bubble($title = null, $datasets = [], $labels = [])
  * @method static Chart doughnut($title = null, $datasets = [], $labels = [])
+ * @method static Chart line($title = null, $datasets = [], $labels = [])
  * @method static Chart pie($title = null, $datasets = [], $labels = [])
  * @method static Chart polarArea($title = null, $datasets = [], $labels = [])
+ * @method static Chart radar($title = null, $datasets = [], $labels = [])
  * @method static Chart scatter($title = null, $datasets = [], $labels = [])
  */
 class Chart extends AbstractChart
