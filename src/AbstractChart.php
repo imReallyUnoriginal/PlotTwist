@@ -166,7 +166,7 @@ abstract class AbstractChart implements Arrayable, Htmlable, Jsonable
     {
         foreach ((array) $formats as $format) {
             if (! in_array($format, $this->formats)) {
-                throw new \Exception('Conflict in required data formats: Must be '.$format.' and ('.implode(' or ', $this->formats).').');
+                throw new \Exception('Data Format Error: Must be '.$format.' and in '.json_encode($this->formats).'.');
             }
         }
 

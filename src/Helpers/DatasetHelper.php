@@ -26,7 +26,7 @@ class DatasetHelper
         } elseif (static::isKeys($data) || static::isPrimitive($data)) {
             return $data->map(fn ($y, $x) => compact('x', 'y'))->values();
         } else {
-            throw new \InvalidArgumentException('Invalid data provided: '.json_encode($data->first()).'.');
+            throw new \InvalidArgumentException('Cannot normalize data in format: '.json_encode($data->first()).'.');
         }
     }
 
@@ -138,9 +138,9 @@ class DatasetHelper
             return static::toKeys($data);
         } elseif ($format === static::OBJECT) {
             return static::toObject($data);
-        } else {
-            throw new \InvalidArgumentException('Invalid format provided: '.$format.'.');
         }
+        
+        throw new \InvalidArgumentException('Invalid format provided: '.$format.'.');
     }
 
     /**
