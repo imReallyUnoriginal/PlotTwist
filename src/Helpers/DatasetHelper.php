@@ -139,7 +139,7 @@ class DatasetHelper
         } elseif ($format === static::OBJECT) {
             return static::toObject($data);
         }
-        
+
         throw new \InvalidArgumentException('Invalid format provided: '.$format.'.');
     }
 
