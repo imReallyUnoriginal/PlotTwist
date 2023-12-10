@@ -37,8 +37,8 @@ class AsyncChart extends AbstractChart
 
     /**
      * Set how often the chart should refresh its data
-     * 
-     * @param int $seconds The chart's refresh interval in seconds. (0 to disable)
+     *
+     * @param  int  $seconds The chart's refresh interval in seconds. (0 to disable)
      */
     public function refreshEvery(int $seconds): static
     {
@@ -54,7 +54,6 @@ class AsyncChart extends AbstractChart
     {
         return $this->refreshEvery(0);
     }
-
 
     public function toHtml(): string
     {
