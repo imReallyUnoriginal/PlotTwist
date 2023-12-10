@@ -3,15 +3,15 @@
 namespace ImReallyUnoriginal\LaravelChartjs;
 
 /**
- * @method static Types\AsyncChart async($title = null)
- * @method static Types\BarChart bar($title = null, $datasets = [])
- * @method static Chart bubble($title = null, $datasets = [])
- * @method static Types\DoughnutChart doughnut($title = null, $datasets = [])
- * @method static Chart line($title = null, $datasets = [])
- * @method static Types\PieChart pie($title = null, $datasets = [])
- * @method static Chart polarArea($title = null, $datasets = [])
- * @method static Types\RadarChart radar($title = null, $datasets = [])
- * @method static Chart scatter($title = null, $datasets = [])
+ * @method static Types\AsyncChart async(string $source, int $refreshInterval = 60)
+ * @method static Types\BarChart bar(string $title = null, array $datasets = [])
+ * @method static Chart bubble(string $title = null, array $datasets = [])
+ * @method static Types\DoughnutChart doughnut(string $title = null, array $datasets = [])
+ * @method static Chart line(string $title = null, array $datasets = [])
+ * @method static Types\PieChart pie(string $title = null, array $datasets = [])
+ * @method static Chart polarArea(string $title = null, array $datasets = [])
+ * @method static Types\RadarChart radar(string $title = null, array $datasets = [])
+ * @method static Chart scatter(string $title = null, array $datasets = [])
  */
 class Chart extends AbstractChart
 {
