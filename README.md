@@ -1,8 +1,6 @@
 # PlotTwist
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/imreallyunoriginal/plottwist.svg?style=flat-square)](https://packagist.org/packages/imreallyunoriginal/plottwist)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/imreallyunoriginal/plottwist/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/imreallyunoriginal/plottwist/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/imreallyunoriginal/plottwist/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/imreallyunoriginal/plottwist/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/imreallyunoriginal/plottwist.svg?style=flat-square)](https://packagist.org/packages/imreallyunoriginal/plottwist)
 
 A simple, intuitive, and eloquent Laravel PHP wrapper for ChartJS
@@ -24,7 +22,13 @@ Chart::radar('Test Chart', [
 ])->setLabels(['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'])
 
 Chart::line('Chart Title')
-    ->addDataset('Dataset 1 Label', Employee::selectRaw('name AS x, age AS y'))
+    ->addDataset('Dataset 1 Label', [
+        'Label 1' => 16,
+        'Label 2' => 32,
+        'Label 3' => 10,
+        'Label 4' => 12,
+        'Label 5' => 10,
+    ])
 ```
 
 ## Testing
