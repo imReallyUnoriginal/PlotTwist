@@ -15,7 +15,7 @@ class LaravelChartjsServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package
-            ->name('laravel-chartjs')
+            ->name('plottwist')
             ->hasConfigFile()
             ->hasViews();
     }

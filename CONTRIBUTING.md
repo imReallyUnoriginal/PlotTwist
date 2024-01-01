@@ -1,6 +1,6 @@
 # Introduction
 
-Thanks for considering contributing to Laravel-ChartJS. this is my first open-source project, so contributions from you help to make it the best it can be.
+Thanks for considering contributing to PlotTwist. this is my first open-source project, so contributions from you help to make it the best it can be.
 
 Following these guidelines shows that you respect the time of the developers managing this open-source project, and it gives you the best chance of having your contribution be accepted.
 
@@ -16,7 +16,7 @@ There are many ways you can contribute to the project, like writing documentatio
 
 # Your First Contribution
 
-Unsure where to begin? You can start by looking through [beginner issues](https://github.com/imReallyUnoriginal/laravel-chartjs/issues?q=is%3Aopen+is%3Aissue+label%3Abeginner).
+Unsure where to begin? You can start by looking through [beginner issues](https://github.com/imReallyUnoriginal/plottwist/issues?q=is%3Aopen+is%3Aissue+label%3Abeginner).
 
 # Getting started
 
@@ -40,4 +40,4 @@ When creating an issue, make sure to answer these questions:
 
 The philosophy for this project is to use high-level abstraction to make charts as easy to work with as possible.
 
-If you want Laravel-ChartJS to have a feature it currently doesn't, open an issue on GitHub that describes the feature you would like to see, why you need it, and how you think it should work.
+If you want PlotTwist to have a feature it currently doesn't, open an issue on GitHub that describes the feature you would like to see, why you need it, and how you think it should work.

@@ -1,9 +1,9 @@
-# Laravel-ChartJS
+# PlotTwist
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/imreallyunoriginal/laravel-chartjs.svg?style=flat-square)](https://packagist.org/packages/imreallyunoriginal/laravel-chartjs)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/imreallyunoriginal/laravel-chartjs/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/imreallyunoriginal/laravel-chartjs/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/imreallyunoriginal/laravel-chartjs/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/imreallyunoriginal/laravel-chartjs/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/imreallyunoriginal/laravel-chartjs.svg?style=flat-square)](https://packagist.org/packages/imreallyunoriginal/laravel-chartjs)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/imreallyunoriginal/plottwist.svg?style=flat-square)](https://packagist.org/packages/imreallyunoriginal/plottwist)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/imreallyunoriginal/plottwist/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/imreallyunoriginal/plottwist/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/imreallyunoriginal/plottwist/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/imreallyunoriginal/plottwist/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
+[![Total Downloads](https://img.shields.io/packagist/dt/imreallyunoriginal/plottwist.svg?style=flat-square)](https://packagist.org/packages/imreallyunoriginal/plottwist)
 
 A simple, intuitive, and eloquent Laravel PHP wrapper for ChartJS
 
@@ -12,7 +12,7 @@ A simple, intuitive, and eloquent Laravel PHP wrapper for ChartJS
 You can install the package via composer:
 
 ```bash
-composer require imreallyunoriginal/laravel-chartjs
+composer require imreallyunoriginal/plottwist
 ```
 
 ## Usage

@@ -1,13 +1,13 @@
 {
     "version": "0.1.0",
-    "name": "imreallyunoriginal/laravel-chartjs",
+    "name": "imreallyunoriginal/plottwist",
     "description": "A Laravel wrapper for ChartJS",
     "keywords": [
         "imReallyUnoriginal",
         "laravel",
-        "laravel-chartjs"
+        "plottwist"
     ],
-    "homepage": "https://github.com/imreallyunoriginal/laravel-chartjs",
+    "homepage": "https://github.com/imreallyunoriginal/PlotTwist",
     "license": "MIT",
     "authors": [
         {
@@ -47,7 +47,7 @@
     },
     "scripts": {
         "post-autoload-dump": "@composer run prepare",
-        "clear": "@php vendor/bin/testbench package:purge-laravel-chartjs --ansi",
+        "clear": "@php vendor/bin/testbench package:purge-plottwist --ansi",
         "prepare": "@php vendor/bin/testbench package:discover --ansi",
         "build": [
             "@composer run prepare",
