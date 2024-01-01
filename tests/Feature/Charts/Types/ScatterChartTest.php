@@ -1,7 +1,7 @@
 <?php
 
-use ImReallyUnoriginal\LaravelChartjs\AbstractChart;
-use ImReallyUnoriginal\LaravelChartjs\Chart;
+use ImReallyUnoriginal\PlotTwist\AbstractChart;
+use ImReallyUnoriginal\PlotTwist\Chart;
 
 describe('ScatterChart', function () {
     it('can be created', function () {

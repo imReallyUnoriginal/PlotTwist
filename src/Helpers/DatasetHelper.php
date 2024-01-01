@@ -1,6 +1,6 @@
 <?php
 
-namespace ImReallyUnoriginal\LaravelChartjs\Helpers;
+namespace ImReallyUnoriginal\PlotTwist\Helpers;
 
 use Illuminate\Support\Collection;
 

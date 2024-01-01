@@ -1,16 +1,16 @@
 <?php
 
-namespace ImReallyUnoriginal\LaravelChartjs\Facades;
+namespace ImReallyUnoriginal\PlotTwist\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \ImReallyUnoriginal\LaravelChartjs\Chart
+ * @see \ImReallyUnoriginal\PlotTwist\Chart
  */
 class Chart extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return \ImReallyUnoriginal\LaravelChartjs\Chart::class;
+        return \ImReallyUnoriginal\PlotTwist\Chart::class;
     }
 }

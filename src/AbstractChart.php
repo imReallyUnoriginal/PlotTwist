@@ -1,12 +1,12 @@
 <?php
 
-namespace ImReallyUnoriginal\LaravelChartjs;
+namespace ImReallyUnoriginal\PlotTwist;
 
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Support\Str;
-use ImReallyUnoriginal\LaravelChartjs\Helpers\DatasetHelper;
+use ImReallyUnoriginal\PlotTwist\Helpers\DatasetHelper;
 
 abstract class AbstractChart implements Arrayable, Htmlable, Jsonable
 {

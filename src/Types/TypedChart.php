@@ -1,8 +1,8 @@
 <?php
 
-namespace ImReallyUnoriginal\LaravelChartjs\Types;
+namespace ImReallyUnoriginal\PlotTwist\Types;
 
-use ImReallyUnoriginal\LaravelChartjs\AbstractChart;
+use ImReallyUnoriginal\PlotTwist\AbstractChart;
 
 class TypedChart extends AbstractChart
 {

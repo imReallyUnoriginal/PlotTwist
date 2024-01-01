@@ -1,10 +1,10 @@
 <?php
 
-namespace ImReallyUnoriginal\LaravelChartjs;
+namespace ImReallyUnoriginal\PlotTwist;
 
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Collection;
-use ImReallyUnoriginal\LaravelChartjs\Helpers\DatasetHelper;
+use ImReallyUnoriginal\PlotTwist\Helpers\DatasetHelper;
 
 class Dataset implements Arrayable
 {

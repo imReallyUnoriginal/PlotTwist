@@ -1,7 +1,7 @@
 <?php
 
-use ImReallyUnoriginal\LaravelChartjs\Chart;
-use ImReallyUnoriginal\LaravelChartjs\Types\BarChart;
+use ImReallyUnoriginal\PlotTwist\Chart;
+use ImReallyUnoriginal\PlotTwist\Types\BarChart;
 
 describe('BarChart', function () {
     it('can be created', function () {

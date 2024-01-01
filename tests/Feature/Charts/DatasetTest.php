@@ -1,6 +1,6 @@
 <?php
 
-use ImReallyUnoriginal\LaravelChartjs\Dataset;
+use ImReallyUnoriginal\PlotTwist\Dataset;
 
 describe('Dataset', function () {
     it('can be created', function () {

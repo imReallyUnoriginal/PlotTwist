@@ -1,9 +1,9 @@
 <?php
 
-namespace ImReallyUnoriginal\LaravelChartjs\Types;
+namespace ImReallyUnoriginal\PlotTwist\Types;
 
 use Illuminate\Support\Str;
-use ImReallyUnoriginal\LaravelChartjs\AbstractChart;
+use ImReallyUnoriginal\PlotTwist\AbstractChart;
 
 class AsyncChart extends AbstractChart
 {

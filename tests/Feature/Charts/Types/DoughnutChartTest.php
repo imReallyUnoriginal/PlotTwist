@@ -1,7 +1,7 @@
 <?php
 
-use ImReallyUnoriginal\LaravelChartjs\Chart;
-use ImReallyUnoriginal\LaravelChartjs\Types\DoughnutChart;
+use ImReallyUnoriginal\PlotTwist\Chart;
+use ImReallyUnoriginal\PlotTwist\Types\DoughnutChart;
 
 describe('DoughnutChart', function () {
     it('can be created', function () {

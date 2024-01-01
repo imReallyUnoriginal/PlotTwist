@@ -1,8 +1,8 @@
 <?php
 
-namespace ImReallyUnoriginal\LaravelChartjs\Tests;
+namespace ImReallyUnoriginal\PlotTwist\Tests;
 
-use ImReallyUnoriginal\LaravelChartjs\Chart;
+use ImReallyUnoriginal\PlotTwist\Chart;
 
 abstract class ChartTestCase extends TestCase
 {

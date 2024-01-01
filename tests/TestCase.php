@@ -1,9 +1,9 @@
 <?php
 
-namespace ImReallyUnoriginal\LaravelChartjs\Tests;
+namespace ImReallyUnoriginal\PlotTwist\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use ImReallyUnoriginal\LaravelChartjs\LaravelChartjsServiceProvider;
+use ImReallyUnoriginal\PlotTwist\PlotTwistServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
@@ -13,14 +13,14 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'ImReallyUnoriginal\\LaravelChartjs\\Database\\Factories\\'.class_basename($modelName).'Factory'
+            fn (string $modelName) => 'ImReallyUnoriginal\\PlotTwist\\Database\\Factories\\'.class_basename($modelName).'Factory'
         );
     }
 
     protected function getPackageProviders($app)
     {
         return [
-            LaravelChartjsServiceProvider::class,
+            PlotTwistServiceProvider::class,
         ];
     }
 

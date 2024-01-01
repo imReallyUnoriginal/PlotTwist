@@ -1,6 +1,6 @@
 <?php
 
-namespace ImReallyUnoriginal\LaravelChartjs\Types;
+namespace ImReallyUnoriginal\PlotTwist\Types;
 
 class DoughnutChart extends PieChart
 {

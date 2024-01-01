@@ -1,6 +1,6 @@
 <?php
 
-namespace ImReallyUnoriginal\LaravelChartjs;
+namespace ImReallyUnoriginal\PlotTwist;
 
 /**
  * @method static Types\AsyncChart async(string $source, int $refreshInterval = 60)

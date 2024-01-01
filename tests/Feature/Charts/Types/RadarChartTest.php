@@ -1,7 +1,7 @@
 <?php
 
-use ImReallyUnoriginal\LaravelChartjs\Chart;
-use ImReallyUnoriginal\LaravelChartjs\Types\RadarChart;
+use ImReallyUnoriginal\PlotTwist\Chart;
+use ImReallyUnoriginal\PlotTwist\Types\RadarChart;
 
 describe('RadarChart', function () {
     it('can be created', function () {

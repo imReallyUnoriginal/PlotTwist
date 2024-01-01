@@ -1,6 +1,6 @@
 <?php
 
-use ImReallyUnoriginal\LaravelChartjs\Helpers\DatasetHelper;
+use ImReallyUnoriginal\PlotTwist\Helpers\DatasetHelper;
 
 describe('DatasetHelper', function () {
     $primitiveData = [

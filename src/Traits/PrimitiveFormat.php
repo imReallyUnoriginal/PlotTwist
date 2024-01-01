@@ -1,8 +1,8 @@
 <?php
 
-namespace ImReallyUnoriginal\LaravelChartjs\Traits;
+namespace ImReallyUnoriginal\PlotTwist\Traits;
 
-use ImReallyUnoriginal\LaravelChartjs\Helpers\DatasetHelper;
+use ImReallyUnoriginal\PlotTwist\Helpers\DatasetHelper;
 
 trait PrimitiveFormat
 {

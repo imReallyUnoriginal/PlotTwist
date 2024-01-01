@@ -1,11 +1,11 @@
 <?php
 
-namespace ImReallyUnoriginal\LaravelChartjs;
+namespace ImReallyUnoriginal\PlotTwist;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
-class LaravelChartjsServiceProvider extends PackageServiceProvider
+class PlotTwistServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {

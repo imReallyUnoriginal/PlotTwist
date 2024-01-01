@@ -1,8 +1,8 @@
 <?php
 
-namespace ImReallyUnoriginal\LaravelChartjs\Types;
+namespace ImReallyUnoriginal\PlotTwist\Types;
 
-use ImReallyUnoriginal\LaravelChartjs\Traits\UsesIndexAxis;
+use ImReallyUnoriginal\PlotTwist\Traits\UsesIndexAxis;
 
 class LineChart extends TypedChart
 {

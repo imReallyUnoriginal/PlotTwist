@@ -1,7 +1,7 @@
 <?php
 
-use ImReallyUnoriginal\LaravelChartjs\Chart;
-use ImReallyUnoriginal\LaravelChartjs\Types\PieChart;
+use ImReallyUnoriginal\PlotTwist\Chart;
+use ImReallyUnoriginal\PlotTwist\Types\PieChart;
 
 describe('PieChart', function () {
     it('can be created', function () {

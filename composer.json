@@ -35,13 +35,12 @@
     },
     "autoload": {
         "psr-4": {
-            "ImReallyUnoriginal\\LaravelChartjs\\": "src/",
-            "ImReallyUnoriginal\\LaravelChartjs\\Database\\Factories\\": "database/factories/"
+            "ImReallyUnoriginal\\PlotTwist\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "ImReallyUnoriginal\\LaravelChartjs\\Tests\\": "tests/",
+            "ImReallyUnoriginal\\PlotTwist\\Tests\\": "tests/",
             "Workbench\\App\\": "workbench/app/"
         }
     },
@@ -73,10 +72,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "ImReallyUnoriginal\\LaravelChartjs\\LaravelChartjsServiceProvider"
+                "ImReallyUnoriginal\\PlotTwist\\PlotTwistServiceProvider"
             ],
             "aliases": {
-                "LaravelChartjs": "ImReallyUnoriginal\\LaravelChartjs\\Facades\\LaravelChartjs"
+                "PlotTwist": "ImReallyUnoriginal\\PlotTwist\\Facades\\PlotTwist"
             }
         }
     },
